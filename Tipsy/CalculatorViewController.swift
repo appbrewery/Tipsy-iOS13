@@ -74,7 +74,14 @@ class CalculatorViewController: UIViewController {
 			// Convert double to string and format to 2 decimal places
 			let resultTo2DecimalPlace = String(format: "%.2f", result)
 			
+			self.performSegue(withIdentifier: "goToResult", sender: self)
 		}
-	}
+		
+		override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+			if segue.identifier == "goToResult" {
+				let destinationVC = segue.destination as! ResultsViewController
+				destinationVC.
+			}
+		}
 }
 
