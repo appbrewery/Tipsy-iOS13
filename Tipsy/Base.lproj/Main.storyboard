@@ -180,7 +180,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="calculatePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x1R-DQ-ihr"/>
-                                    <segue destination="Dnf-m2-FPm" kind="presentation" id="n4J-ug-lUp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -205,11 +204,12 @@
                         <outlet property="tenPctButton" destination="7y6-Kf-yF0" id="oc7-GC-TmP"/>
                         <outlet property="twentyPctButton" destination="UtR-dU-EKt" id="nws-pR-3iA"/>
                         <outlet property="zeroPctButton" destination="XzR-0E-Xf7" id="1wA-dF-Nyw"/>
+                        <segue destination="Dnf-m2-FPm" kind="presentation" identifier="resultsSegue" id="vJF-Pf-eBj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="117.85714285714285"/>
+            <point key="canvasLocation" x="1080" y="118"/>
         </scene>
         <!--Results View Controller-->
         <scene sceneID="bJV-Cc-sXH">
@@ -294,6 +294,10 @@
                         <viewLayoutGuide key="safeArea" id="Jmu-aI-Opa"/>
                     </view>
                     <navigationItem key="navigationItem" id="ncb-VM-Kux"/>
+                    <connections>
+                        <outlet property="settingsLabel" destination="HGt-bn-sCv" id="ZHl-O2-gZw"/>
+                        <outlet property="totalLabel" destination="uLJ-ii-hft" id="dhw-zx-al7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uLi-Eb-NGd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
