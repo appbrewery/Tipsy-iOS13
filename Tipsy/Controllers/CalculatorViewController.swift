@@ -17,6 +17,8 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var splitNumberLabel: UILabel!
     
     var tip: Float = 0
+    var split: Float = 0
+    var finalresult: String = "0.0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,7 @@ class CalculatorViewController: UIViewController {
     }
 
     @IBAction func tipChanged(_ sender: UIButton) {
+        billTextField.endEditing(true)
         zeroPctButton.isSelected = false
         tenPctButton.isSelected = false
         twentyPctButton.isSelected = false
@@ -32,12 +35,31 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        split = Float(sender.value)
         splitNumberLabel.text = String(format: "%d", Int(sender.value))
     }
     
     @IBAction func calculateButtonPressed(_ sender: Any) {
-        print(tip)
-        print(splitNumberLabel.text!)
+        let bill = billTextField.text!
+        var sum: Float = 0
+        if let billFloat = Float(bill) {
+            sum = billFloat + (tip * billFloat)
+        } else {
+            print("Cannot convert")
+        }
+        
+        finalresult = String(format: "%.2f", sum/split)
+        
+        self.performSegue(withIdentifier: "goToResults", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToResults" {
+            let destinationVC = segue.destination as! ResultsViewController
+            destinationVC.tip = Int(tip * 100)
+            destinationVC.split = Int(split)
+            destinationVC.result = finalresult
+        }
     }
     
 }
