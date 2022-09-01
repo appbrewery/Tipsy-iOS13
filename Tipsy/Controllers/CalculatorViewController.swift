@@ -16,6 +16,8 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var twentyPctButton: UIButton!
     @IBOutlet weak var splitNumberLabel: UILabel!
     
+    var tip: Float = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -26,15 +28,16 @@ class CalculatorViewController: UIViewController {
         tenPctButton.isSelected = false
         twentyPctButton.isSelected = false
         sender.isSelected = true
-        print("TAG \(sender.tag)")
+        tip = sender.tag == 1 ? 0.1 : sender.tag == 2 ? 0.2 : 0
     }
     
-    @IBAction func stepperValueChanged(_ sender: Any) {
-        
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        splitNumberLabel.text = String(format: "%d", Int(sender.value))
     }
     
     @IBAction func calculateButtonPressed(_ sender: Any) {
-        
+        print(tip)
+        print(splitNumberLabel.text!)
     }
     
 }
